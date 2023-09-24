@@ -9,7 +9,9 @@ Another plugins of our team you can see on site http://rmplus.pro
 
 Changelog:
 
-2.2.5 The functionality to set the "unread" flag for an issue has been implemented. Please note that the description is in Russian only.
+2.2.5 
+
+* The functionality to set the "unread" flag for an issue has been implemented. Please note that the description is in Russian only.
 
 2.2.4
 * Added: support Rails 5 and Redmine 4
