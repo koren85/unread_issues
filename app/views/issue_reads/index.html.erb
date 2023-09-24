@@ -1,0 +1,38 @@
+<h2>Список записей о просмотре задач</h2>
+
+<div>
+  <h3>Группировка данных:</h3>
+  <%= link_to 'Текущая неделя', issue_reads_path, class: 'group-link' %> |
+  <%= link_to 'Прошлая неделя', issue_reads_path(last_week: true), class: 'group-link' %> |
+  <%= link_to 'Этот месяц', issue_reads_path(current_month: true), class: 'group-link' %>
+  <br>
+</div>
+
+<table class="list">
+  <thead>
+  <tr>
+    <th>Номер задачи</th>
+    <th>Задача</th>
+    <th>Дата создания</th>
+    <th>Дата изменения</th>
+    <th>Дата просмотра</th>
+    <th>Пользователь</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @issue_reads.each do |issue_read| %>
+    <tr>
+      <td><%= link_to issue_read.issue.id, issue_path(issue_read.issue) %></td>
+      <td><%= link_to issue_read.issue.subject, issue_path(issue_read.issue) %></td>
+      <td><%= issue_read.issue.created_on.strftime('%d.%m.%Y %H:%M:%S') %></td>
+      <td><%= issue_read.issue.updated_on.strftime('%d.%m.%Y %H:%M:%S') %></td>
+      <td><%= issue_read.read_date.strftime('%d.%m.%Y %H:%M:%S') %></td>
+      <td><%= link_to issue_read.user.lastname+' '+issue_read.user.firstname, user_path(issue_read.user) %></td>
+      <td>
+        <%= link_to '', issue_read_path(issue_read), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить эту запись?' }, class: 'icon icon-del', title: 'Удалить запись' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

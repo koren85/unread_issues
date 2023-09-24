@@ -1,0 +1,7 @@
+<% if @issue.present? %>
+  <%= javascript_include_tag 'custom_button.js', :plugin => 'unread_issues' %>
+  <script>
+      var issueId = <%= @issue.id %>; // Передаем идентификатор задачи в JavaScript
+      var CurrentUserId = <%= User.current.id %>; // Передаем идентификатор задачи в JavaScript
+  </script>
+<% end %>
